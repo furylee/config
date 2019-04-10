@@ -2,13 +2,21 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends React.Component {
-  state = {
-    a: 1,
+function Fn(De) {
+  return class A extends De {
+    render() {
+      return <De />;
+    }
   };
+}
+
+@Fn
+class App extends React.Component {
+  // state = {
+  //   a: 1,
+  // };
 
   render() {
-
     return (
       <div className="App">
         <header className="App-header">
