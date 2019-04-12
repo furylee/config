@@ -1,6 +1,8 @@
 import axios from 'axios';
 import _ from 'lodash';
 
+const {apiUrl} = process.env;
+console.log(apiUrl);
 
 const DEF_AXIOS_OPTS = {
   timeout: 10000,

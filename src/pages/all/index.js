@@ -13,10 +13,9 @@ class All extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Fragment>
-        <div className='bx banner'>
+        <div className='bx banner1'>
           <div className={styles.bannerLeft}>
             <Carousel effect="fade" autoplay>
               <div><h3>1</h3></div>

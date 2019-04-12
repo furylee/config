@@ -28,12 +28,5 @@ export default {
       },
 
     }],
-  ],
-  proxy:{
-    "/porsche": {
-      "target": "https://zzenjqa.weshare.com.cn/",
-      "changeOrigin": true,
-      // "pathRewrite": { "^/porsche" : "" }
-    }
-  }
+  ]
 };
