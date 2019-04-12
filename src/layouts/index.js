@@ -1,11 +1,20 @@
-import styles from './index.css';
+import React from 'react';
+import { Layout } from 'antd';
+
+import './global.less';
+
+import BaseHeader from './BaseHeader';
+import BaseFooter from './BaseFooter';
+
+const { Content } = Layout;
 
 function BasicLayout(props) {
   return (
-    <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to umi!</h1>
-      {props.children}
-    </div>
+    <Layout>
+      <BaseHeader />
+      <Content style={{ backgroundColor: '#F6F6F6',padding:'16px 0 20px' }}>{props.children}</Content>
+      <BaseFooter />
+    </Layout>
   );
 }
 

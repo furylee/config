@@ -1,14 +1,17 @@
-
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
+  history:'hash',
+  theme: {
+    'primary-color': '#FB551B',
+  },
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
       dva: true,
       dynamicImport: { webpackChunkName: true },
-      title: 'diversionpc',
+      title: '闪电贷',
       dll: true,
       locale: {
         enable: true,
@@ -23,6 +26,14 @@ export default {
           /components\//,
         ],
       },
+
     }],
   ],
-}
+  proxy:{
+    "/porsche": {
+      "target": "https://zzenjqa.weshare.com.cn/",
+      "changeOrigin": true,
+      // "pathRewrite": { "^/porsche" : "" }
+    }
+  }
+};
