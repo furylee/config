@@ -1,11 +1,11 @@
 import axios from 'axios';
 import _ from 'lodash';
 
-const {apiUrl} = process.env;
-console.log(apiUrl);
+const { apiUrl } = process.env;
 
 const DEF_AXIOS_OPTS = {
   timeout: 10000,
+  baseURL: apiUrl,
 };
 
 
@@ -34,16 +34,14 @@ const codeMessage = {
 };
 
 function matchCodeMes(response) {
-  const errortext = codeMessage[response.status] || response.statusText;
-  return errortext;
+  return codeMessage[response.status] || response.statusText;
 }
 
 function responseHandler(resp) {
-  // const data = resp.data;
-  // debugger;
-  // if (data.resultCode === '0000') {
-    return resp;
-  // }
+  const { data } = resp;
+  if (data.resultCode === '0000') {
+    return data;
+  }
   return Promise.reject(resp.data);
 }
 
@@ -52,7 +50,7 @@ function requestHandler(config) {
   // if(cookie){
   //   config['headers']['x-csrf-token'] = cookie;
   // }
-  config['headers']['USER-TOKEN'] = ''
+  config['headers']['USER-TOKEN'] = '';
   return config;
 }
 

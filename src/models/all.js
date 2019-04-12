@@ -3,13 +3,35 @@ import Servers from '../server/all';
 export default {
   namespace: 'all',
   state: {
-    a: 1,
+    dataList: [],
+    bannerList: [],
+    nextOffset: 0,
   },
   effects: {
-    * queryList({ payload }, { call, put }) {
-      const { data } = yield call(Servers.queryList);
-      console.log(data);
+    * queryList({ payload }, { call, put, select }) {
+      const { quanbu, nextOffset } = yield call(Servers.queryList,payload);
+      const {dataList} = yield select(state=>state.all);
+      console.log(quanbu);
+      yield put({
+        type: 'save',
+        payload: {
+          dataList: dataList.concat(quanbu),
+          nextOffset,
+        },
+      });
     },
+
+    * queryBanner({ payload }, { call, put }) {
+      const { list } = yield call(Servers.queryBanner,payload);
+      yield put({
+        type: 'save',
+        payload: {
+          bannerList: list,
+        },
+      });
+    },
+
+
   },
   reducers: {
     save(state, { payload }) {

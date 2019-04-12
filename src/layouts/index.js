@@ -12,7 +12,11 @@ function BasicLayout(props) {
   return (
     <Layout>
       <BaseHeader />
-      <Content style={{ backgroundColor: '#F6F6F6',padding:'16px 0 20px' }}>{props.children}</Content>
+      <Content style={{
+        backgroundColor: '#F6F6F6',
+        padding: '16px 0 20px',
+        minHeight: 'calc( 100vh - 208px - 50px - 64px )',
+      }}>{props.children}</Content>
       <BaseFooter />
     </Layout>
   );
